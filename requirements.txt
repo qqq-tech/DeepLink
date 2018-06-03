@@ -1,0 +1,7 @@
+django<2
+django-jsonfield
+requests
+pillow
+django-imagekit
+click
+jupyter
