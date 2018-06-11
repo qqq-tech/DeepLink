@@ -7,4 +7,4 @@ from Deeplink.utl import ListUtil
 def loadLinkData():
   sa = SqliteAdapaterImpl("/Deeplink/database/DeepLink.db")
   GlobalVal.deepLinkList= sa.select(GET_INITIAL_LINK)
-  GlobalVal.deepLinkLDict=ListUtil.listToDict(GlobalVal.deepLinkList);
+  GlobalVal.deepLinkLDict=ListUtil.listToDict(GlobalVal.deepLinkList,"link_name")

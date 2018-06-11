@@ -1,2 +1,3 @@
 global deepLinkList
 global deepLinkDict
+global dynFuncDict
