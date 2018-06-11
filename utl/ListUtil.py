@@ -4,3 +4,4 @@ def listToDict(fromObj,key):
   for once in fromObj:
     res[once[key]]=once
   return res
+

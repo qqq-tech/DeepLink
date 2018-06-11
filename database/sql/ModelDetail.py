@@ -1,1 +1,0 @@
-BATCH_RESULT = "insert into batch_status(status,run_date) values (?, ?)"

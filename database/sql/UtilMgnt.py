@@ -1,1 +1,1 @@
-GET_INITIAL_UTIL="select group_name,name,module,function,argument_json from util_mgmt"
+GET_INITIAL_UTIL="select group_name,process_name,module_path,module_function,argument_json from util_mgmt"
