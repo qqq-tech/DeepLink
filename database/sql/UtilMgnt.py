@@ -1,1 +1,1 @@
-BATCH_RESULT = "insert into batch_status(status,run_date) values (?, ?)"
+GET_INITIAL_UTIL="select group_name,name,module,function,argument_json from util_mgmt"

@@ -19,9 +19,9 @@ class SqliteAdapaterImpl(DBAdapterBase.AdapterBaseClass):
         if(self.conn!=None):
             self.conn.close()
 
-    def select(self, sql, data):
+    def select(self, sql, data={}):
         self.cur = self.conn.cursor()
-        self.cur.execute(self.sql, (1, 'SEA'))
+        self.cur.execute(self.sql, data)
         rows = self.cur.fetchall()
         for row in rows:
             print(row)

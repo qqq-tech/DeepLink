@@ -1,1 +1,1 @@
-BATCH_RESULT = "insert into batch_status(status,run_date) values (?, ?)"
+GET_INITIAL_LINK = "select model_name,model_function,using_pre_result,pre_process_group,pre_process_name,pre_process_argument_json,post_process_group,post_process_name,post_process_argument_json from model_detail"
