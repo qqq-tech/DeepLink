@@ -4,7 +4,6 @@ import copy
 
 def linkRun(linkName,data):
   globalRes={}
-  runIndex=0
   inputData=cloneData=copy.deepcopy(data)
   oneLink = GlobalVal.deepLinkDict["linkName"]
 
@@ -20,7 +19,6 @@ def linkRun(linkName,data):
     if not o["post_process_grouop"]:
       inputData = {}
       processData = (GlobalVal.getDynFunc(o["pre_process_group"], o["pre_process_name"]))()
-    globalRes[runIndex]=localRes
-    runIndex+=1
+    globalRes[o["model_name"]]=localRes
 
   return globalRes
