@@ -3,6 +3,13 @@ from Deeplink.util import ConvertUtil
 import copy
 
 
+def isNotBlank(myString):
+  if myString and myString.strip():
+    # myString is not None AND myString is not empty or blank
+    return True
+  # myString is None OR myString is empty or blank
+  return False
+
 def linkRun(linkName,data):
   globalRes={}
   inputData=copy.deepcopy(data)
@@ -10,11 +17,15 @@ def linkRun(linkName,data):
   oneLink = GlobalVal.deepLinkDict["linkName"]
 
   for o in oneLink:
-    if not o["pre_process_group"]:
+    #1. 오리지널 이미지 사용에 체크 로직 추가할것
+    #json 형태의 모델의 이름 {name:결과 name}
+    if isNotBlank(o["select_pre_model_output"]):
+      inputData=globalRes[o["select_pre_model_output"]]
+
+    if isNotBlank(o["pre_process_group"]):
       preProcessArgument = {}
-      if not o["using_pre_result"]:
-        preProcessArgument=o["pre_process_argument_json"]
-      else:
+      if o["using_pre_prediction"]:
+        # localRes 대체하여 globalRes에서 refrence_model_result 로 가져 올것.
         preProcessArgument = ConvertUtil.setPreResultArg(o["pre_process_argument_json"],localRes)
       inputData=(GlobalVal.getDynFunc(o["pre_process_group"],o["pre_process_name"]))(inputData,preProcessArgument)
     #1. 이전 output bin 사용 or 원본 사용에 대한 처리 가 필요
@@ -22,8 +33,9 @@ def linkRun(linkName,data):
 
     localRes=(GlobalVal.getDynFunc("model",o["model_name"]))(inputData)
 
-    # if not o["post_process_grouop"]:
-    #   processData = (GlobalVal.getDynFunc(o["pre_process_group"], o["pre_process_name"]))()
+#후처리는 result만...
+    if isNotBlank(o["post_process_grouop"]):
+      localRes = (GlobalVal.getDynFunc(o["pre_process_group"], o["pre_process_name"]))()
 
     globalRes[o["model_name"]]=localRes
 

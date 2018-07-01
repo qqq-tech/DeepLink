@@ -21,4 +21,4 @@ def setPreResultArg(fromObj,toStr):
     fromKey,toKey=result.pop(key)
     result[toKey]=fromObj[fromKey]
 
-  return result;
+  return result
