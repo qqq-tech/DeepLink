@@ -8,8 +8,8 @@ class SqliteAdapaterImpl(DBAdapterBase.AdapterBaseClass):
         self.conn(dbname)
 
     def __del__(self):
-        print("파괴");
         self.close()
+        print("파괴")
 
     def conn(self, dbname):
         self.conn = sqlite3.connect(dbname)
@@ -21,7 +21,7 @@ class SqliteAdapaterImpl(DBAdapterBase.AdapterBaseClass):
 
     def select(self, sql, data={}):
         self.cur = self.conn.cursor()
-        self.cur.execute(self.sql, data)
+        self.cur.execute(sql, data)
         rows = self.cur.fetchall()
         for row in rows:
             print(row)
