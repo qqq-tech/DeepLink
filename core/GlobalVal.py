@@ -6,7 +6,7 @@ global dynFuncDict
 global db
 #db=SqliteAdapaterImpl("/Deeplink/database/DeepLink.db")
 db=SqliteAdapaterImpl("../db.sqlite3")
-
+#sys.path.append("C:/doit/mymod")
 
 def getDynFunc(group,name):
   return dynFuncDict[group][name]

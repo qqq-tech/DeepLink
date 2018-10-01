@@ -1,4 +1,4 @@
-from GStock.sql import DBAdapterBase
+from Deeplink.database.sql import DBAdapterBase
 import sqlite3
 
 
@@ -13,6 +13,7 @@ class SqliteAdapaterImpl(DBAdapterBase.AdapterBaseClass):
 
     def conn(self, dbname):
         self.conn = sqlite3.connect(dbname)
+        self.conn.row_factory = lambda C, R: {c[0]: R[i] for i, c in enumerate(C.description)}
         # self.cur = self.conn.cursor()
 
     def close(self):
