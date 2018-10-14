@@ -1,6 +1,6 @@
 from Deeplink.database.sql.SqliteAdapter import SqliteAdapaterImpl
 
-global deepLinkList
+#global deepLinkList
 global deepLinkDict
 global dynFuncDict
 global db

@@ -5,5 +5,5 @@ from Deeplink.util import ConvertUtil
 
 
 def loadLinkData():
-  GlobalVal.deepLinkList= GlobalVal.db.select(GET_INITIAL_LINK)
-  GlobalVal.deepLinkLDict=ConvertUtil.listToDict(GlobalVal.deepLinkList, "link_name")
+  GlobalVal.deepLinkLDict = GlobalVal.db.select(GET_INITIAL_LINK)
+  #GlobalVal.deepLinkLDict=ConvertUtil.listToDict(GlobalVal.deepLinkList, "link_name")
