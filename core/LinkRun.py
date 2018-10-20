@@ -12,15 +12,16 @@ def isNotBlank(myString):
 
 def linkRun(linkName,data):
   globalRes={}
+  localRes={}
   inputData=copy.deepcopy(data)
   originalData=copy.deepcopy(data)
-  oneLink = GlobalVal.deepLinkDict["linkName"]
+  oneLink = GlobalVal.deepLinkDict[linkName]
 
   for o in oneLink:
     #1. 오리지널 이미지 사용에 체크 로직 추가할것
     #json 형태의 모델의 이름 {name:결과 name}
-    if isNotBlank(o["select_pre_model_output"]):
-      inputData=globalRes[o["select_pre_model_output"]]
+    if isNotBlank(o["select_pre_module_output"]):
+      inputData=globalRes[o["select_pre_module_output"]]
 
     if isNotBlank(o["pre_process_group"]):
       preProcessArgument = {}

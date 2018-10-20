@@ -2,8 +2,16 @@ import json
 
 def listToDict(fromObj,key):
   res={}
+  arr=[]
+  preLInkName=""
   for once in fromObj:
-    res[once[key]]=once
+    if(preLInkName!='' and preLInkName!=once[key]):
+      res[once[key]] = arr
+      arr.clear()
+    arr.append(once)
+    preLInkName=once[key]
+
+  res[preLInkName]=arr
   return res
 
 def dicToJson(obj):
